@@ -5,7 +5,9 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = tt_um_frequency_counter.v frequency_counter/src/edge_detect.v frequency_counter/src/seven_segment.v frequency_counter/src/frequency_counter.v
+PYTHONPATH := $(PWD)/../src/frequency_counter/test:$(PYTHONPATH)
+COCOTB_LOG_LEVEL = DEBUG
 
 ifneq ($(GATES),yes)
 
@@ -38,7 +40,8 @@ VERILOG_SOURCES += $(PWD)/tb.v
 TOPLEVEL = tb
 
 # MODULE is the basename of the Python test file
-MODULE = test
+MODULE = test_frequency_counter
+TESTCASE = test_all
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
