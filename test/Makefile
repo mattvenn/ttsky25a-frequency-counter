@@ -6,7 +6,7 @@ SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = tt_um_frequency_counter.v frequency_counter/src/edge_detect.v frequency_counter/src/seven_segment.v frequency_counter/src/frequency_counter.v
-PYTHONPATH := $(SRC_DIR)/frequency_counter/test
+export PYTHONPATH := $(SRC_DIR)/frequency_counter/test
 COCOTB_LOG_LEVEL = DEBUG
 
 ifneq ($(GATES),yes)
