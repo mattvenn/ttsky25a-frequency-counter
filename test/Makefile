@@ -6,10 +6,15 @@ SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = tt_um_frequency_counter.v frequency_counter/src/edge_detect.v frequency_counter/src/seven_segment.v frequency_counter/src/frequency_counter.v
-PYTHONPATH := $(PWD)/../src/frequency_counter/test:$(PYTHONPATH)
+PYTHONPATH := $(SRC_DIR)/frequency_counter/test:$(PYTHONPATH)
 COCOTB_LOG_LEVEL = DEBUG
 
 ifneq ($(GATES),yes)
+
+check:
+	@echo "PYTHONPATH is: $(PYTHONPATH)"
+	@echo "Listing test directory:"
+	@ls -l $(SRC_DIR)/frequency_counter/test
 
 # RTL simulation:
 SIM_BUILD				= sim_build/rtl
